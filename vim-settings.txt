@@ -1,9 +1,8 @@
 syntax on
 
-autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; python3' shellescape(@%, 1)<cr>
-
 call plug#begin()
 
+" colorscheme gruvbox
 colorscheme afterglow
 let g:afterglow_blackout=1
 
@@ -18,7 +17,25 @@ Plug 'morhetz/gruvbox'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'tomlion/vim-solidity'
 Plug 'sheerun/vim-polyglot'
-Plug 'davidhalter/jedi-vim'
+Plug 'valloric/youcompleteme'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ambv/black'
 
 call plug#end()
 
+autocmd FileType python nnoremap <buffer><F9> :exec '!clear; python3' shellescape(@%, 1)<cr>
+
+" inoremap { {<CR>}<Esc>ko
+" nnoremap Y y$
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
+" nnoremap J mzJ`z
+" nnoremap , ,<C-g>u
+" nnoremap . .<C-g>u
+" nnoremap [ .<C-g>u
+" nnoremap ! !<C-g>u
+" nnoremap ? ?<C-g>u
+nnoremap <c-f> :FZF ~ <cr>
+
+set rtp+=/usr/local/opt/fzf
